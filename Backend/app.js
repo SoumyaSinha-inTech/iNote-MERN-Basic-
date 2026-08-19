@@ -6,7 +6,7 @@ mongooseConnect();
 //Express require
 const express=require("express");
 const app=express();
-let port =process.env.PORT;
+let port =process.env.PORT || 5000;
 
 //Cors
 const cors = require("cors");
