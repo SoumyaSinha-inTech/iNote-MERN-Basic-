@@ -12,7 +12,7 @@ let port =process.env.PORT || 5000;
 const cors = require("cors");
 
 const corsOptions = {
-    origin: "https://i-note-ocww30q4x-soumyasinha-intechs-projects.vercel.app/",
+    origin: "https://i-note-ocww30q4x-soumyasinha-intechs-projects.vercel.app",
     credentials: true
 };
 
