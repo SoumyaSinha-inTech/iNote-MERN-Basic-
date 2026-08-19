@@ -1,0 +1,424 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Stack+Sans+Text:wght@200..700&display=swap');
+html,
+body,
+#root {
+    min-height: 100%;
+    height: auto;
+    overflow-x: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background-color: rgb(182, 195, 211);
+    overflow-y: auto;
+    font-family: "Open Sans", sans-serif;
+}
+
+.cont {
+    margin-top: 10vh;
+}
+
+.noteWrite {
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    margin-left: 5vw;
+}
+
+
+.welcome {
+    font-family: "Stack Sans Text", sans-serif;
+}
+
+
+.welcome h1 {
+    font-size: 40px;
+}
+
+.noteadd {
+    background-color: white;
+
+    width: 430px;
+    max-width: 100%;
+
+    height: 55vh;
+    min-height: 400px;
+
+    border-radius: 20px;
+
+    padding: 2vh 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.noteadd form {
+    width: 350px;
+    max-width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+}
+
+
+
+.noteadd form br {
+    display: none;
+}
+
+
+.noteadd input[type="text"] {
+    width: 100%;
+    height: 45px;
+
+    margin-top: 12px;
+
+    padding: 0 10px;
+
+    background-color: black;
+
+    border: none;
+    border-radius: 8px;
+
+    color: white;
+
+    font-family: "Open Sans", sans-serif;
+}
+
+
+.noteadd input[type="text"]::placeholder {
+    color: rgb(150, 150, 150);
+}
+
+
+
+.noteadd textarea {
+    width: 100%;
+
+    height: 18vh;
+    min-height: 130px;
+
+    margin-top: 16px;
+
+    padding: 10px;
+
+    background-color: rgba(83, 83, 83, 0.806);
+
+    border: none;
+    border-radius: 8px;
+
+    color: white;
+
+    resize: none;
+
+    font-family: "Open Sans", sans-serif;
+}
+
+
+.noteadd textarea::placeholder {
+    color: black;
+}
+
+
+
+#submit {
+    width: 100%;
+    height: 45px;
+
+    margin-top: auto;
+    margin-bottom: 0;
+
+    background-color: rgb(39, 116, 210);
+
+    border: none;
+    border-radius: 10px;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+
+#noteShow {
+    padding-left: 3vw;
+    padding-right: 3vw;
+}
+
+
+.noteCard {
+    background-color: white;
+
+    width: 100%;
+
+    min-height: 235px;
+
+    border-radius: 8px;
+
+    padding: 0;
+
+    border: none;
+}
+
+
+.noteCard .card-body {
+    padding: 35px;
+}
+
+
+.noteTitle {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+
+.noteDescription {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+.but {
+    display: flex;
+    gap: 15px;
+
+    padding: 0 35px 25px;
+}
+
+
+.delete,
+.edit {
+    cursor: pointer;
+}
+
+
+/* TABLET*/
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .container {
+        margin-top: 7vh;
+    }
+
+
+    .welcome h1 {
+        font-size: 32px;
+    }
+
+
+    /* ADD NOTE */
+
+    .noteadd {
+        width: 100%;
+        height: 50vh;
+
+        min-height: 400px;
+
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+
+    .noteadd form {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    #noteShow .row {
+        justify-content: center;
+    }
+
+
+    #noteShow .col-md-6 {
+        width: 100%;
+        flex: 0 0 100%;
+    }
+
+
+    .noteCard {
+        width: 100%;
+        max-width: 500px;
+
+        margin: 0 auto;
+    }
+
+
+    .noteCard .card-body {
+        padding: 30px;
+    }
+
+
+    .noteTitle {
+        font-size: 28px;
+    }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+
+    .container {
+        margin-top: 5vh;
+    }
+
+    .noteWrite {
+        align-items: center;
+    }
+
+
+    .welcome {
+        width: 100%;
+        max-width: 430px;
+    }
+
+
+    .welcome h1 {
+        font-size: 30px;
+    }
+
+
+    .noteadd {
+        width: 100%;
+        max-width: 430px;
+
+        height: 50vh;
+        min-height: 400px;
+
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+
+    .noteadd form {
+        width: 100%;
+        max-width: 350px;
+    }
+
+
+    #noteShow {
+        margin-top: 5vh;
+        padding: 0;
+    }
+
+
+    #noteShow .row {
+        justify-content: center;
+    }
+
+
+    #noteShow .col-md-6 {
+        width: 100%;
+        flex: 0 0 100%;
+    }
+
+
+    .noteCard {
+        width: 100%;
+        max-width: 430px;
+
+        margin: 0 auto;
+
+        min-height: 220px;
+    }
+
+
+    .noteCard .card-body {
+        padding: 25px;
+    }
+
+
+    .noteTitle {
+        font-size: 27px;
+    }
+
+
+    .noteDescription {
+        font-size: 14px;
+    }
+
+
+    .but {
+        padding: 0 25px 20px;
+    }
+
+}
+
+
+/* SMALL MOBILE */
+
+@media (max-width: 480px) {
+
+    .container {
+        margin-top: 4vh;
+    }
+
+
+    .welcome h1 {
+        font-size: 27px;
+    }
+
+
+    .noteadd {
+        min-height: 390px;
+    }
+
+
+    .noteadd h4 {
+        font-size: 21px;
+    }
+
+
+    .noteadd input[type="text"] {
+        height: 44px;
+    }
+
+
+    .noteadd textarea {
+        height: 16vh;
+        min-height: 120px;
+    }
+
+
+    #submit {
+        height: 44px;
+    }
+
+
+    .noteCard {
+        min-height: 200px;
+    }
+
+
+    .noteCard .card-body {
+        padding: 22px;
+    }
+
+
+    .noteTitle {
+        font-size: 25px;
+    }
+
+
+    .noteDescription {
+        font-size: 13px;
+    }
+
+
+    .but {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+}

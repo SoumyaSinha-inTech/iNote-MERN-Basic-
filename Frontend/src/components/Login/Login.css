@@ -1,0 +1,377 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Stack+Sans+Text:wght@200..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+/* =========================
+   ERROR
+   ========================= */
+
+.err {
+    width: 100%;
+    height: auto;
+    background-color: rgba(255, 0, 0, 0.871);
+}
+
+.err p {
+    font-size: 20px;
+    padding: 5px;
+    color: white;
+}
+
+
+/* =========================
+   TOP / LOGO
+   ========================= */
+
+.top {
+    padding: 20px 3%;
+}
+
+.logo {
+    font-family: "Stack Sans Text", sans-serif;
+    color: rgb(19, 95, 188);
+    font-weight: 600;
+}
+
+
+/* =========================
+   MAIN SECTION
+   ========================= */
+
+.middle {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 6vw;
+
+    margin: 15vh auto;
+
+    width: 90%;
+
+    flex-wrap: nowrap;
+}
+
+
+/* =========================
+   LEFT & RIGHT SECTIONS
+   ========================= */
+
+.first,
+.second {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+}
+
+
+/* =========================
+   WELCOME HEADING
+   ========================= */
+
+.h {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    font-family: "Stack Sans Text", sans-serif;
+}
+
+.inote-heading {
+    color: rgb(19, 95, 188);
+    font-size: 45px;
+
+    margin-left: 8px;
+    margin-top: -10px;
+}
+
+
+/* =========================
+   CREATE ACCOUNT FORM
+   ========================= */
+
+.acc {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================
+   LOGIN FORM
+   ========================= */
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================
+   BUTTON
+   ========================= */
+
+.button {
+    background-color: rgb(39, 116, 210);
+
+    margin-top: 3vh;
+
+    border: none;
+
+    width: 100%;
+    height: 50px;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: rgb(0, 108, 216);
+}
+
+
+/* =========================
+   INPUT
+   ========================= */
+
+.input {
+    margin-top: 3vh;
+
+    background-color: rgb(227, 227, 227);
+
+    border: none;
+
+    width: 100%;
+    height: 50px;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   OR
+   ========================= */
+
+.or {
+    width: 55px;
+    height: 55px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background-color: rgb(210, 210, 210);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: bold;
+
+    align-self: center;
+}
+
+
+/* =========================
+   SECOND SECTION
+   ========================= */
+
+.second {
+    padding-top: 6vh;
+}
+
+
+/* =========================
+   FORM HEADING
+   ========================= */
+
+.font {
+    font-size: 22px;
+}
+
+
+/* =================================================
+   TABLET
+   769px - 992px
+   ================================================= */
+
+@media (max-width: 992px) {
+
+    body {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .middle {
+        width: 85%;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 35px;
+
+        margin-top: 6vh;
+        margin-bottom: 8vh;
+    }
+
+    .first,
+    .second {
+        width: 100%;
+        min-width: 0;
+        flex: none;
+    }
+
+    .second {
+        padding-top: 0;
+    }
+
+    .or {
+        margin: 0;
+        flex-shrink: 0;
+    }
+
+    .font {
+        font-size: 22px;
+    }
+
+    .input,
+    .button {
+        width: 100%;
+    }
+}
+
+
+/* =================================================
+   MOBILE
+   ================================================= */
+
+@media (max-width: 768px) {
+
+    .top {
+        padding: 20px 5%;
+    }
+
+    .middle {
+        width: 90%;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 25px;
+
+        margin-top: 5vh;
+        margin-bottom: 8vh;
+    }
+
+    .first,
+    .second {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .second {
+        padding-top: 0;
+    }
+
+    .or {
+        width: 50px;
+        height: 50px;
+
+        margin: 0;
+    }
+
+    .font {
+        font-size: 20px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .inote-heading {
+        margin-left: 5px;
+        margin-top: 0;
+
+        font-size: 32px;
+    }
+
+    .input,
+    .button {
+        height: 48px;
+        font-size: 15px;
+    }
+}
+
+
+/* =================================================
+   SMALL MOBILE
+   ================================================= */
+
+@media (max-width: 480px) {
+
+    .top {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .middle {
+        width: 92%;
+
+        gap: 22px;
+
+        margin-top: 4vh;
+        margin-bottom: 8vh;
+    }
+
+    .font {
+        font-size: 18px;
+    }
+
+    .input,
+    .button {
+        height: 48px;
+        font-size: 15px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .inote-heading {
+        font-size: 28px;
+    }
+
+    .or {
+        width: 48px;
+        height: 48px;
+    }
+}
