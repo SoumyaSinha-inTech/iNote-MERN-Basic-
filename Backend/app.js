@@ -10,11 +10,13 @@ let port =process.env.PORT || 5000;
 
 //Cors
 const cors = require("cors");
-app.use(cors({
-    
+
+const corsOptions = {
     origin: "https://i-note-amber.vercel.app",
     credentials: true
-}));
+};
+
+app.use(cors(corsOptions));
 
 //Cookie
 const cookieParser = require("cookie-parser");
