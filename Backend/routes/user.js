@@ -7,7 +7,6 @@ const userModel = require("../models/User")
 //password and cookie
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const JWT_SECRET = "secretoftheapp"
 
 //middleware-ifLoggedIn
 const ifLoggedIn=require("../middleware/ifLoggedIn")
@@ -50,7 +49,7 @@ router.post('/createuser',
                         });
 
                         //cookie 
-                        let token = jwt.sign({ email, _id: createdUser._id }, JWT_SECRET)
+                        let token = jwt.sign({ email, _id: createdUser._id }, process.env.JWT_SECRET)
                         res.cookie("token", token);
                         res.send(createdUser)
                     });
@@ -93,7 +92,7 @@ router.post('/login',
                     return res.status(400).json({ error: "Incorrect Credentials" })
                 } else {
                     //cookie 
-                    let token = jwt.sign({ email, _id: checkuser._id }, JWT_SECRET)
+                    let token = jwt.sign({ email, _id: checkuser._id }, process.env.JWT_SECRET)
                     res.cookie("token", token);
                     res.send(token)
                 }

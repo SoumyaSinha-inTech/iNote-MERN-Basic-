@@ -1,5 +1,4 @@
 const jwt=require('jsonwebtoken')
- const JWT_SECRET = "secretoftheapp";
 
 function ifLoggedIn(req,res,next) {
     const token = req.cookies.token;
@@ -7,7 +6,7 @@ function ifLoggedIn(req,res,next) {
         return res.status(401).send({error:"Authentication Denied"})
     }
    try{
-     const data = jwt.verify(token, JWT_SECRET);
+     const data = jwt.verify(token, process.env.JWT_SECRET);
     req.user = data;
     next();
    } catch(error){
