@@ -5,6 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState , useEffect } from "react";
 
 function Login() {
+  //Bring backend deployed URL
+  const url="https://inote-benk.onrender.com"
+
   // To navigate to routes in react
   const navigate = useNavigate();
 
@@ -18,7 +21,7 @@ function Login() {
   //2. For Creating user
   const handleCreate = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/user/createuser", {
+    const response = await fetch(`${url}/user/createuser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +48,7 @@ function Login() {
   //2. For Logging in user
   const handleLogin = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/user/login", {
+    const response = await fetch(`${url}/user/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

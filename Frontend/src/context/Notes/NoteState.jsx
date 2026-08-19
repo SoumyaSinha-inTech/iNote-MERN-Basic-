@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import NoteContext from "./NoteContext";
 
 const noteState = (props) => {
-  const port = "http://localhost:5000/";
+  //Bring backend deployed URL
+  const url="https://inote-benk.onrender.com";
+
+
   const [notes, setNotes] = useState([]);
 
   //Fetching Notes from backend:
   const getNotes = async () => {
-    const response = await fetch(`${port}notes/getallnotes`, {
+    const response = await fetch(`${url}notes/getallnotes`, {
       method: "GET",
       credentials: "include",
     });
@@ -19,7 +22,7 @@ const noteState = (props) => {
 
   //Add Note
   const addNote = async (title, description, tags) => {
-    const response = await fetch("http://localhost:5000/notes/createnotes", {
+    const response = await fetch(`${url}/notes/createnotes`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +47,7 @@ const noteState = (props) => {
   //Delete Note
   const deleteNote = async (id) => {
     const response = await fetch(
-      `http://localhost:5000/notes/deletenotes/${id}`,
+      `${url}/notes/deletenotes/${id}`,
       {
         method: "DELETE",
         credentials: "include",
@@ -61,7 +64,7 @@ const noteState = (props) => {
   //Edit Note
   const editingNote = async (id, title, description, tags) => {
     const response = await fetch(
-      `http://localhost:5000/notes/updatenotes/${id}`,
+      `${url}/notes/updatenotes/${id}`,
       {
         method: "PUT",
         headers: {

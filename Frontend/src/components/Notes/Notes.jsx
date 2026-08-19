@@ -5,6 +5,9 @@ import { useContext } from "react";
 import NoteContext from "../../context/Notes/NoteContext";
 
 function Notes() {
+  //Bring backend deployed URL
+  const url="https://inote-benk.onrender.com"
+
   const [alert, setAlert] = useState("");
   const navigate = useNavigate();
   const context = useContext(NoteContext);
@@ -40,7 +43,7 @@ function Notes() {
 
   //LogOut {BACKEND}
   const handleLogout = async () => {
-    await fetch("http://localhost:5000/user/logout", {
+    await fetch(`${url}/user/logout`, {
       method: "POST",
       credentials: "include",
     });
@@ -53,7 +56,7 @@ function Notes() {
   useEffect(() => {
     //make fn
     const getuser = async () => {
-      let response = await fetch("http://localhost:5000/user/getuser", {
+      let response = await fetch(`${url}/user/getuser`, {
         method: "POST",
         credentials: "include",
       });
