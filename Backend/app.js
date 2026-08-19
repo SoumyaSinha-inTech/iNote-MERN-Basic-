@@ -9,14 +9,15 @@ const app=express();
 let port =process.env.PORT || 5000;
 
 //Cors
+
 const cors = require("cors");
 
-const corsOptions = {
+app.use(cors({
     origin: "https://i-note-amber.vercel.app",
-    credentials: true
-};
-
-app.use(cors(corsOptions));
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
 //Cookie
 const cookieParser = require("cookie-parser");
