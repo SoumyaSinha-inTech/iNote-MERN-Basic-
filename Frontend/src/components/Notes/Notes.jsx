@@ -44,8 +44,7 @@ function Notes() {
   //LogOut {BACKEND}
   const handleLogout = async () => {
     await fetch(`${url}/user/logout`, {
-      method: "POST",
-      credentials: "include",
+      method: "POST"
     });
 
     navigate("/");
