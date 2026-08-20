@@ -87,7 +87,6 @@ function Notes() {
     edescription: "",
     etags: "",
   });
-
   const ref = useRef(null);
   const updateNote = (note) => {
     ref.current.click();
