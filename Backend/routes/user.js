@@ -48,20 +48,21 @@ router.post(
 
             //cookie
             let token = jwt.sign(
-              { email },
-              process.env.JWT_SECRET,
-            );
-            return res
-              .cookie("token", token, {
-                httpOnly: true,
-                secure: true,
-                sameSite: "none",
-              })
-              .status(200)
-              .json({
-                success: true,
-                token:token
-              });
+  { email: createdUser.email, id: createdUser._id },
+  process.env.JWT_SECRET
+);
+
+return res
+  .cookie("token", token, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+  })
+  .status(200)
+  .json({
+    success: true,
+    token: token,
+  });
           });
         });
       }
@@ -97,20 +98,23 @@ router.post(
         } else {
           //cookie
           let token = jwt.sign(
-            { email },
-            process.env.JWT_SECRET,
-          );
+  {
+    email: checkuser.email,
+    id: checkuser._id,
+  },
+  process.env.JWT_SECRET
+);
           return res
-            .cookie("token", token, {
-              httpOnly: true,
-              secure: true,
-              sameSite: "none",
-            })
-            .status(200)
-            .json({
-              success: true,
-              token: token
-            });
+  .cookie("token", token, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+  })
+  .status(200)
+  .json({
+    success: true,
+    token: token,
+  });
         }
       }
     } catch (err) {
@@ -122,8 +126,12 @@ router.post(
 
 //Get loggedin user details
 router.post("/getuser", ifLoggedIn, async (req, res) => {
-  const _id = req.user._id;
-  let foundUser = await userModel.findById(_id).select("-password");
+  const id = req.user.id;
+
+  const foundUser = await userModel
+    .findById(id)
+    .select("-password");
+
   res.send(foundUser);
 });
 

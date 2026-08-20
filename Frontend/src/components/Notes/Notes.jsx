@@ -61,7 +61,7 @@ function Notes() {
       const response = await fetch(`${url}/user/getuser`, {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${token}`,
+          "auth-token": token,
         },
       });
 
