@@ -10,8 +10,9 @@ const noteState = (props) => {
 
   //Fetching Notes from backend:
   const getNotes = async () => {
-    const response = await fetch(`${url}notes/getallnotes`, {
+    const response = await fetch(`${url}/notes/getallnotes`, {
       method: "GET",
+      headers:{Authorization: `Bearer ${token}`},
       credentials: "include",
     });
 
@@ -26,6 +27,7 @@ const noteState = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       credentials: "include",
       body: JSON.stringify({
@@ -50,6 +52,7 @@ const noteState = (props) => {
       `${url}/notes/deletenotes/${id}`,
       {
         method: "DELETE",
+        headers:{Authorization: `Bearer ${token}`},
         credentials: "include",
       },
     );
@@ -69,6 +72,7 @@ const noteState = (props) => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         credentials: "include",
         body: JSON.stringify({

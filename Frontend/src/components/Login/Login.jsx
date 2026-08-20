@@ -28,7 +28,6 @@ function Login() {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
         body: JSON.stringify({
           name,
           email: emailCreate,
@@ -39,6 +38,7 @@ function Login() {
       const data = await response.json();
       // checking the response & To take user to notes page
       if (response.ok) {
+        localStorage.setItem("token", data.token);
         navigate("/notes");
       } else {
         alert(data.error || "Something went wrong");
@@ -52,24 +52,29 @@ function Login() {
   //2. For Logging in user
   const handleLogin = async (e) => {
     e.preventDefault();
-    const response = await fetch(`${url}/user/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify({
-        email: emailLogin,
-        password: passwordLogin,
-      }),
-    });
-    // checking the response & To take user to notes page
-    if (response.ok) {
-      navigate("/notes");
-    } else {
-      const data = await response.json();
+    try {
+      const response = await fetch(`${url}/user/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: emailLogin,
+          password: passwordLogin,
+        }),
+      });
 
-      setAlert("Email or password is incorrect");
+      const data = await response.json();
+      // checking the response & To take user to notes page
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
+        navigate("/notes");
+      } else {
+        setAlert("Email or password is incorrect");
+      }
+    } catch (error) {
+      console.error(error);
+      setAlert("Server is starting. Please wait...");
     }
     setLMail("");
     setLPass("");

@@ -54,18 +54,32 @@ function Notes() {
   //To get loggin User info
   const [foundUser, setUser] = useState([]);
   useEffect(() => {
-    //make fn
-    const getuser = async () => {
-      let response = await fetch(`${url}/user/getuser`, {
+  const getuser = async () => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const response = await fetch(`${url}/user/getuser`, {
         method: "POST",
-        credentials: "include",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
+
+      if (!response.ok) {
+        navigate("/");
+        return;
+      }
+
       const user = await response.json();
       setUser(user);
-    };
-    // now call fn
-    getuser();
-  }, []);
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  getuser();
+}, []);
 
   //update note(edit)
   const [editNote, setEditNote] = useState({

@@ -48,7 +48,7 @@ router.post(
 
             //cookie
             let token = jwt.sign(
-              { email, _id: createdUser._id },
+              { email },
               process.env.JWT_SECRET,
             );
             return res
@@ -60,6 +60,7 @@ router.post(
               .status(200)
               .json({
                 success: true,
+                token:token
               });
           });
         });
@@ -96,7 +97,7 @@ router.post(
         } else {
           //cookie
           let token = jwt.sign(
-            { email, _id: checkuser._id },
+            { email },
             process.env.JWT_SECRET,
           );
           return res
@@ -108,6 +109,7 @@ router.post(
             .status(200)
             .json({
               success: true,
+              token: token
             });
         }
       }
