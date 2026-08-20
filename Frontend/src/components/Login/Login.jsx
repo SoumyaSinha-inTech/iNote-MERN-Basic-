@@ -2,11 +2,11 @@ import React from "react";
 import "./Login.css";
 import home from "../Home/home.png";
 import { Link, useNavigate } from "react-router-dom";
-import { useState , useEffect } from "react";
+import { useState, useEffect } from "react";
 
 function Login() {
   //Bring backend deployed URL
-  const url="https://inote-benk.onrender.com"
+  const url = "https://inote-benk.onrender.com";
 
   // To navigate to routes in react
   const navigate = useNavigate();
@@ -21,28 +21,32 @@ function Login() {
   //2. For Creating user
   const handleCreate = async (e) => {
     e.preventDefault();
-    const response = await fetch(`${url}/user/createuser`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify({
-        name,
-        email: emailCreate,
-        password: passwordCreate,
-      }),
-    });
-    // checking the response & To take user to notes page
-    if (response.ok) {
+
+    try {
+      const response = await fetch(`${url}/user/createuser`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          name,
+          email: emailCreate,
+          password: passwordCreate,
+        }),
+      });
+
+      const data = await response.json();
+      // checking the response & To take user to notes page
+      if (response.ok) {
         navigate("/notes");
-    } else {
-        const data = await response.json();
-        setAlert(data.error[0].msg)
+      } else {
+        alert(data.error || "Something went wrong");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Server is starting. Please wait...");
     }
-    setName("")
-    setCMail("")
-    setCPass("")
   };
 
   //2. For Logging in user
@@ -61,26 +65,26 @@ function Login() {
     });
     // checking the response & To take user to notes page
     if (response.ok) {
-        navigate("/notes");
+      navigate("/notes");
     } else {
-        const data = await response.json();
+      const data = await response.json();
 
-        setAlert("Email or password is incorrect");
+      setAlert("Email or password is incorrect");
     }
-    setLMail("")
-    setLPass("")
+    setLMail("");
+    setLPass("");
   };
 
   const [alert, setAlert] = useState("");
   useEffect(() => {
-  if (alert) {
-    const timer = setTimeout(() => {
-      setAlert("");
-    }, 2000);
+    if (alert) {
+      const timer = setTimeout(() => {
+        setAlert("");
+      }, 2000);
 
-    return () => clearTimeout(timer);
-  }
-}, [alert]);
+      return () => clearTimeout(timer);
+    }
+  }, [alert]);
 
   return (
     <>
@@ -120,10 +124,10 @@ function Login() {
       </nav>
 
       {alert && (
-    <div className="alert alert-danger" role="alert">
-        {alert}
-    </div>
-)}
+        <div className="alert alert-danger" role="alert">
+          {alert}
+        </div>
+      )}
 
       <div className="middle">
         {/* Create Account */}

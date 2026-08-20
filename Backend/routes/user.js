@@ -51,16 +51,16 @@ router.post(
               { email, _id: createdUser._id },
               process.env.JWT_SECRET,
             );
-            res
+            return res
               .cookie("token", token, {
                 httpOnly: true,
                 secure: true,
                 sameSite: "none",
               })
+              .status(200)
               .json({
                 success: true,
               });
-            res.send(createdUser);
           });
         });
       }
@@ -99,16 +99,16 @@ router.post(
             { email, _id: checkuser._id },
             process.env.JWT_SECRET,
           );
-          res
+          return res
             .cookie("token", token, {
               httpOnly: true,
               secure: true,
               sameSite: "none",
             })
+            .status(200)
             .json({
               success: true,
             });
-          res.send(token);
         }
       }
     } catch (err) {
@@ -127,8 +127,13 @@ router.post("/getuser", ifLoggedIn, async (req, res) => {
 
 //LogOut User
 router.post("/logout", (req, res) => {
-  res.clearCookie("token");
-  res.json({ success: true });
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+  });
+
+  return res.json({ success: true });
 });
 
 module.exports = router;
